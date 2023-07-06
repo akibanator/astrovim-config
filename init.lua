@@ -36,6 +36,8 @@ return {
           -- "go",
         },
         ignore_filetypes = { -- disable format on save for specified filetypes
+          -- "c",
+          -- "cpp",
           -- "python",
         },
       },
@@ -81,5 +83,28 @@ return {
     --     ["~/%.config/foo/.*"] = "fooscript",
     --   },
     -- }
+    vim.api.nvim_create_autocmd("Filetype", {
+      pattern = { "c", "Makefile", "cpp" },
+      callback = function()
+        vim.cmd "setlocal tabstop=4 shiftwidth=4 noexpandtab"
+        vim.cmd "setlocal listchars=tab:→\\ ,trail:⋅"
+        vim.cmd "setlocal list"
+      end,
+    })
+
+    if vim.fn.has "wsl" == 1 then
+      vim.g.clipboard = {
+        name = "WslClipboard",
+        copy = {
+          ["+"] = "clip.exe",
+          ["*"] = "clip.exe",
+        },
+        paste = {
+          ["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+          ["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+        },
+        cache_enabled = 0,
+      }
+    end
   end,
 }

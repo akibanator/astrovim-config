@@ -51,4 +51,23 @@ return {
     event = "BufRead",
     config = function() require("todo-comments").setup() end,
   },
+  {
+    "akinsho/toggleterm.nvim",
+    cmd = { "ToggleTerm", "TermExec" },
+    opts = {
+      size = 10,
+      on_create = function()
+        vim.opt.foldcolumn = "0"
+        vim.opt.signcolumn = "no"
+      end,
+      open_mapping = [[<F7>]],
+      shading_factor = 2,
+      direction = "tab",
+      float_ops = {
+        border = "curved",
+        highlights = { border = "Normal", background = "Normal" },
+      },
+      start_in_insert = true,
+    },
+  },
 }
