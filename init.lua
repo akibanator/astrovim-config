@@ -27,6 +27,13 @@ return {
   },
 
   lsp = {
+    config = {
+      clangd = {
+        capabilities = {
+          offsetEncoding = "utf-8",
+        },
+      },
+    },
     -- customize lsp formatting options
     formatting = {
       -- control auto formatting on save
@@ -84,10 +91,10 @@ return {
     --   },
     -- }
 
-    require("notify").setup({
+    require("notify").setup {
       background_colour = "#000000",
-    })
-    
+    }
+
     vim.api.nvim_create_autocmd("Filetype", {
       pattern = { "c", "Makefile", "cpp" },
       callback = function()
@@ -113,8 +120,8 @@ return {
     end
 
     -- Providers
-    vim.g.python3_host_prog = '/usr/bin/python3'
-    
+    vim.g.python3_host_prog = "/usr/bin/python3"
+
     -- vim.api.nvim_create_autocmd("Filetype", {
     --   pattern = { "c", "cpp", "make" },
     --   callback = function()
