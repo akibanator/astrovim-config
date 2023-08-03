@@ -83,6 +83,11 @@ return {
     --     ["~/%.config/foo/.*"] = "fooscript",
     --   },
     -- }
+
+    require("notify").setup({
+      background_colour = "#000000",
+    })
+    
     vim.api.nvim_create_autocmd("Filetype", {
       pattern = { "c", "Makefile", "cpp" },
       callback = function()
