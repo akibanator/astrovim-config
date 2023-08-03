@@ -112,6 +112,9 @@ return {
       }
     end
 
+    -- Providers
+    vim.g.python3_host_prog = '/usr/bin/python3'
+    
     -- vim.api.nvim_create_autocmd("Filetype", {
     --   pattern = { "c", "cpp", "make" },
     --   callback = function()
