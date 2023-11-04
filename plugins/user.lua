@@ -18,8 +18,8 @@ return {
           colorblind = {
             enable = true,
             severity = {
-              protan = 1,
-              deutan = 0.8,
+              protan = 0.8,
+              deutan = 0.9,
             },
           },
           styles = {
